@@ -14,6 +14,8 @@ screen -S $serverScreenName -X stuff "/say Server is stopping for backup in 5 mi
 screen -S $serverScreenName -X stuff "/save-all\n"
 sleep 5 # Waits 5 seconds for MC data to be flushed to secondary storage.
 screen -S $serverScreenName -X stuff "/stop\n"
+# Kills the old screen upon server termination
+screen -S -X $serverScreenName kill
 
 
 # Wait until 00:15 before restarting server
